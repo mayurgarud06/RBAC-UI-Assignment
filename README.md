@@ -1,75 +1,125 @@
-<<<<<<< HEAD
-# Getting Started with Create React App
+# Admin Dashboard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A responsive Admin Dashboard built with React, Chart.js, and Tailwind CSS. The dashboard provides an interactive interface for managing users, roles, and permissions with dynamic charts and statistics.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **Role Distribution Pie Chart**: Visual representation of user roles.
+- **User Statistics**: Total, active, and inactive user counts displayed as cards.
+- **Permissions Per Role**: Breakdown of permissions assigned to each role.
+- **Dynamic and Responsive Design**: Built with Tailwind CSS for seamless responsiveness.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Tech Stack
 
-### `npm test`
+- **Frontend**:
+  - ReactJS
+  - Chart.js (Pie and Bar Charts)
+  - Tailwind CSS
+- **Backend**:
+  - JSON Server (for mock API endpoints)
+- **Tools**:
+  - Axios (for API calls)
+  - Chart.js plugins for interactivity
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## Requirements
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Ensure you have the following installed on your system:
+1. **Node.js** (v16 or above)
+2. **npm** (Node Package Manager) or **yarn**
+3. **Git** (for cloning the repository)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Steps to Run the Project
 
-### `npm run eject`
+### 1. Clone the Repository
+'''
+git clone https://github.com/mayurgarud06/RBAC-UI-Assignment.git
+cd RBAC-UI-Assignment
+'''
+### 2. Install Dependencies
+Run the following command to install all required dependencies:
+npm install
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Start the JSON Server
+npx json-server --watch db.json --port 5000
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Start the React Application
+npm start
+The application will run on http://localhost:3000.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+##API Endpoints
+The JSON Server provides the following mock API endpoints:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+###Dashboard Message:
 
-## Learn More
+GET /dashboard
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Example response:json
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Copy code
+{
+  "message": "Welcome to the Admin Dashboard!"
+}
 
-### Code Splitting
+###Users:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+GET /users  :Retrieves all users.
 
-### Analyzing the Bundle Size
+Example response: json
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+[
+  { "id": 1, "name": "John Doe", "status": "Active", "role": "Admin" },
+  { "id": 2, "name": "Jane Smith", "status": "Inactive", "role": "User" }
+]
+###Roles:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+GET /roles
+Retrieves all roles and their permissions.
+Example response:
+json
 
-### Advanced Configuration
+[
+  { "id": 1, "name": "Admin", "permissions": ["Add User", "Delete User"] },
+  { "id": 2, "name": "User", "permissions": ["View Profile"] }
+]
+###Permissions:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+GET /permissions
+Retrieves all available permissions.
+Example response:
+json
 
-### Deployment
+[
+  { "id": 1, "name": "Add User" },
+  { "id": 2, "name": "Delete User" },
+  { "id": 3, "name": "View Profile" }
+]
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+##Json Server Data 
+{
+  "dashboard": { "message": "Welcome to the Admin Dashboard!" },
+  "users": [
+    { "id": 1, "name": "John Doe", "status": "Active", "role": "Admin" },
+    { "id": 2, "name": "Jane Smith", "status": "Inactive", "role": "User" }
+  ],
+  "roles": [
+    { "id": 1, "name": "Admin", "permissions": ["Add User", "Delete User"] },
+    { "id": 2, "name": "User", "permissions": ["View Profile"] }
+  ],
+  "permissions": [
+    { "id": 1, "name": "Add User" },
+    { "id": 2, "name": "Delete User" },
+    { "id": 3, "name": "View Profile" }
+  ]
+}
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-=======
-# RBAC-UI-Assignment
-VRV Security’s Frontend Developer Intern Assignment
->>>>>>> 2916449acab5c149b0f17f38e01a9b3f3442a933
+
